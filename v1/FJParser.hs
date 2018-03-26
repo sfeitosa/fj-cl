@@ -39,12 +39,12 @@ data Expr = Var String                               -- Variable
           | Closure [(Type,String)] Expr             -- Closure
           deriving (Show, Eq)
 
--- FJ + Closure nominal typing
+-- FJ + Closures nominal typing
 ------------------------------
 data Type = Type String
           deriving (Show, Eq)
 
--- FJ + Closure auxiliary definitions
+-- FJ + Closures auxiliary definitions
 -------------------------------------
 type Env = Map String Type
 type CT = Map String T
