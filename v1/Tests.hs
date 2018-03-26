@@ -306,7 +306,7 @@ genClassTable = do n <- choose (1,10)
 ------------------------------------------------------------------------------
 genCreateObject :: Int -> Env -> CT -> String -> Gen Expr
 genCreateObject size ctx ct c = 
-  do el <- Control.Monad.mapM (genExpr (size `div` 2) False ct ctx) f
+  do el <- Control.Monad.mapM (genExpr (size `div` 3) False ct ctx) f
      return (CreateObject c el)
   where f = case (fields ct c) of
               Just lst -> Data.List.map (\((Type t),_) -> t) lst
@@ -318,7 +318,7 @@ genCreateObject size ctx ct c =
 -- Returns: A FieldAccess expression.
 -------------------------------------------------------------------
 genFieldAccess :: Int -> Env -> CT -> String -> String -> Gen Expr
-genFieldAccess size ctx ct t f = do e <- genExpr (size - 1) False ct ctx t
+genFieldAccess size ctx ct t f = do e <- genExpr (size `div` 2) False ct ctx t
                                     return (FieldAccess e f)
 
 -- Function: genMethodInvk
@@ -328,8 +328,8 @@ genFieldAccess size ctx ct t f = do e <- genExpr (size - 1) False ct ctx t
 ------------------------------------------------------------------------------
 genMethodInvk :: Int -> Env -> CT -> String -> String -> [String] -> Gen Expr
 genMethodInvk size ctx ct t m pt = 
-  do e <- genExpr (size - 1) True ct ctx t
-     el <- Control.Monad.mapM (genExpr (size `div` 2) False ct ctx) pt
+  do e <- genExpr (size `div` 2) True ct ctx t
+     el <- Control.Monad.mapM (genExpr (size `div` 3) False ct ctx) pt
      return (MethodInvk e m el) 
 
 -- Function: genCast
@@ -338,7 +338,7 @@ genMethodInvk size ctx ct t m pt =
 -- Returns: A Cast expression.
 --------------------------------------------------------------
 genCast :: Int -> Env -> CT -> String -> String -> Gen Expr
-genCast size ctx ct t tc = do e <- genExpr (size - 1) False ct ctx tc
+genCast size ctx ct t tc = do e <- genExpr (size `div` 2) False ct ctx tc
                               return (Cast t e)
 
 -- Function: genClosure
@@ -348,7 +348,7 @@ genCast size ctx ct t tc = do e <- genExpr (size - 1) False ct ctx tc
 ------------------------------------------------------------------------------
 genClosure :: Int -> Env -> CT -> String -> [(Type,String)] -> Gen Expr
 genClosure size ctx ct rt pc = 
-  do e <- genExpr (size - 1) False ct ctx' rt
+  do e <- genExpr (size `div` 2) False ct ctx' rt
      return (Closure pc e)
   -- The only allowed variables inside closures are the closure parameters.
   where ctx' = fromList (Data.List.map (\(t,n) -> (n,t)) pc) 
