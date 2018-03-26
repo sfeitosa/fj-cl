@@ -1,7 +1,7 @@
--- Utilitary functions for Featherweight Java interpreter
+-- Utilitary functions for FJ + Closures interpreter
 -- Author: Samuel da Silva Feitosa
--- Date: 01/2018
----------------------------------------------------------
+-- Date: 03/2018
+----------------------------------------------------
 module FJUtils where
 import FJParser
 import Data.Map

@@ -1,7 +1,7 @@
--- Haskell type checker for Featherweight Java
+-- Haskell type checker for FJ + Closures
 -- Author: Samuel da Silva Feitosa
--- Date: 01/2018
-----------------------------------------------
+-- Date: 03/2018
+-----------------------------------------
 module FJTypeChecker where
 import FJParser
 import FJUtils

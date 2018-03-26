@@ -1,7 +1,7 @@
--- QuickCheck property-based testing for Featherweight Java
+-- QuickCheck property-based testing for FJ + Closures
 -- Author: Samuel da Silva Feitosa
 -- Date: 03/2018
------------------------------------------------------------
+------------------------------------------------------
 module Tests where
 import FJParser
 import FJUtils

@@ -1,7 +1,7 @@
--- Arbitrary class table for testing Featherweight Java interpreter.
+-- Arbitrary class table for testing FJ + Closures interpreter.
 -- Author: Samuel da Silva Feitosa
 -- Date: 03/2018
---------------------------------------------------------------------
+---------------------------------------------------------------
 module CT where
 import FJParser
 import FJUtils

@@ -1,7 +1,7 @@
--- Haskell interpreter for Featherweight Java
+-- Haskell interpreter for FJ + Closures
 -- Author: Samuel da Silva Feitosa
--- Date: 01/2018
----------------------------------------------
+-- Date: 02/2018
+----------------------------------------
 module FJInterpreter where
 import FJParser
 import FJUtils

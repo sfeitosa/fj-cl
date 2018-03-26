@@ -1,12 +1,12 @@
--- Haskell parser for Featherweight Java
+-- Haskell parser for FJ + Closures
 -- Author: Samuel da Silva Feitosa
--- Date: 01/2018
----------------------------------------------
+-- Date: 03/2018
+-----------------------------------
 module FJParser where
 import Data.Map
 
--- Featherweight Java syntactic constructors
---------------------------------------------
+-- FJ + Closures syntactic constructors
+---------------------------------------
 data T = TClass Class
        | TInterface Interface
        deriving (Show, Eq)
@@ -36,16 +36,16 @@ data Expr = Var String                               -- Variable
           | MethodInvk Expr String [Expr]            -- Method Invocation
           | CreateObject String [Expr]               -- Object Instantiation
           | Cast String Expr                         -- Cast
-          | Closure [(Type,String)] Expr
+          | Closure [(Type,String)] Expr             -- Closure
           deriving (Show, Eq)
 
--- Featherweight Java nominal typing
-------------------------------------
+-- FJ + Closure nominal typing
+------------------------------
 data Type = Type String
           deriving (Show, Eq)
 
--- Featherweight Java auxiliary definitions
--------------------------------------------
+-- FJ + Closure auxiliary definitions
+-------------------------------------
 type Env = Map String Type
 type CT = Map String T
 
